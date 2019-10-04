@@ -1,0 +1,70 @@
+#!/bin/bash 
+### Begin BSUB Options 
+#BSUB -P CSC289 
+#BSUB -J 16thread__16GPUs_unbalanced
+#BSUB -W 02:00 
+#BSUB -nnodes 4 
+#BSUB -alloc_flags "smt1"
+### End BSUB Options and begin shell commands
+module load cuda
+
+echo "unBalanced Workload 16 Threads"
+cd /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/
+echo "4 bins-----CTA-----16GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1536 4 0 0
+done
+
+echo "16 bins-----CTA-----16GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1536 16 0 0
+done
+
+echo "32 bins-----CTA-----16GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1536 32 0 0
+done
+
+echo "128 bins-----CTA-----16GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1536 128 0 0
+done
+
+echo "256 bins-----CTA-----16GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1536 256 0 0
+done
+
+
+
+
+# echo "512 bins-----CTA----960 Blocks---16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 640 512 0 0
+# done
+
+# echo "---------------------------------------------------------------------------------------------------------------------"
+# echo "4 bins-----warp-----16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 4 0 1
+# done
+
+# echo "16 bins-----WARP-----16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 16 0 1
+# done
+
+# echo "32 bins-----WARP-----16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 32 0 1
+# done
+
+# echo "128 bins----WARP-----16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 128 0 1
+# done
+
+# echo "256 bins-----WARP-----16GPU-----"
+# for d in */ ; do
+#     jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 256 0 1
+# done

@@ -1,0 +1,15 @@
+#!/bin/bash 
+### Begin BSUB Options 
+#BSUB -P CSC289 
+#BSUB -J 1GPU 
+#BSUB -W 00:30 
+#BSUB -nnodes 1 
+#BSUB -alloc_flags "smt1"
+### End BSUB Options and begin shell commands
+
+echo " WARP Threads"
+cd /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/
+echo "32 bins-----WARP-----1GPU-----"
+for d in */ ; do
+    jsrun --nrs 1 --tasks_per_rs 1 --cpu_per_rs 1 --gpu_per_rs 1 --rs_per_host 1 ./trianglecounting.bin $d 1 128 1280 32 0 0
+done

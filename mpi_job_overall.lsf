@@ -1,0 +1,71 @@
+#!/bin/bash 
+### Begin BSUB Options 
+#BSUB -P CSC289 
+#BSUB -J bin_CTA_test_1280 
+#BSUB -W 02:00 
+#BSUB -nnodes 1
+#BSUB -alloc_flags "smt1"
+### End BSUB Options and begin shell commands
+module load cuda
+
+cd /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/
+echo "4 bins-----CTA-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 4 1 0
+done
+
+printf "\n"
+echo "16 bins-----CTA-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 16 1 0
+done
+
+printf "\n"
+echo "32 bins-----CTA-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 32 1 0
+done
+
+printf "\n"
+echo "128 bins-----CTA-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 128 1 0
+done
+
+printf "\n"
+echo "256 bins-----CTA-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 256 1 0
+done
+printf "\n"
+echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-------------------------------------"
+
+printf "\n"
+echo "4 bins-----WARP-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 4 0 0
+done
+
+printf "\n"
+echo "16 bins-----WARP-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 16 0 0
+done
+
+printf "\n"
+echo "32 bins-----WARP-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 32 0 0
+done
+
+printf "\n"
+echo "128 bins----WARP-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 128 0 0
+done
+
+printf "\n"
+echo "256 bins-----WARP-----1GPU-----no workload balance"
+for d in */ ; do
+    mpirun -n 1 trianglecounting.bin $d 1 128 1280 256 0 0
+done
