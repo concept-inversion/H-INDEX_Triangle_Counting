@@ -375,9 +375,6 @@ CTA_hash_count(vertex_t* adj_list, index_t* beg_pos, vertex_t* edge_list, int ed
 			start+=blockDim.x;
 			//printf("Tid: %d, Search:%d\n",threadIdx.x,neighbor);
 		}
-		//atomicAdd(&GLOBAL_COUNT[0],P_counter);
-		
-		//if(threadIdx.x%32==0){printf("I: %d, Start:%d, End:%d, Count:%d\n",i,vertex,vertex1,G_counter);}
 		i+=gridDim.x*2;
 		
 	}
@@ -416,7 +413,7 @@ struct arguments Triangle_count(int rank, char name[100], struct arguments args,
 	index_t edge_count= graph_d-> edge_count;
 	index_t edge_list_count= graph_d-> edge_list_count;
 	index_t edges= edge_list_count>>1;
-	/* Preprocessing Step to calculate the ratio */
+	/* Preprocessing Step to calculate the ratio  for workload balancing based upon the combined degree of each edge.*/
 	int *prefix=(int *)malloc(sizeof(int)*edges);
 	int temp;
 	for(int i=0;i<edge_list_count;i+=2)
