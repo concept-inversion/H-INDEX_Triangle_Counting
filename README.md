@@ -9,6 +9,8 @@
 
 ## Multi-GPU:
     We use jsrun to run multi-gpu version of the code on Summit.
+    https://www.olcf.ornl.gov/for-users/system-user-guides/summit/summit-user-guide/#running-jobs
+
 
 ## Input arguments: 
 1. Folder name containing the binary file of dataset. 
