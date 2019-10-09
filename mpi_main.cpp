@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
    //MPI_Barrier(MPI_COMM_WORLD);
    if(myrank==0)
    {
-     printf("%s,%d,%d,%d,%f,%f,%f,%d,%s \n",argv[1],args.vertices,args.edge_count,global_sum,global_max_time,global_min_time,(args.edge_count/global_max_time/1000000000),total_rank,group);
+     printf("%s,%d,%d,%d,%f,%f,%f,%d \n",argv[1],args.vertices,args.edge_count,global_sum,global_max_time,global_min_time,(args.edge_count/global_max_time/1000000000),total_rank);
    }
    MPI_Finalize();
    return 0;

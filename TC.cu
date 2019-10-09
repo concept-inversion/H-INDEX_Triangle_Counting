@@ -11,7 +11,7 @@
 #include "TC.cuh"
 #include <assert.h>
 
-int BUCKET_SIZE=100;
+int BUCKET_SIZE=32;
 using namespace std;
 
 __device__ 
@@ -407,7 +407,6 @@ struct arguments Triangle_count(int rank, char name[100], struct arguments args,
 	int deviceCount;
 	HRR(cudaGetDeviceCount(&deviceCount));
 	//fprintf(stderr,"----------------Device count: %d\n",deviceCount);
-	  
 	//cudaSetDevice();
 	HRR(cudaSetDevice(rank%deviceCount));
 	//cudaDeviceProp devProp;

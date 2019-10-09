@@ -15,7 +15,7 @@
 ## Input arguments: 
 1. Folder name containing the binary file of dataset. 
 2. Total number of process 
-3. Number of threads 
+3. Number of threads (Minimum 32)
 4. Number of Blocks 
 5. Number of Buckets for hashing (Limit: 256) 
 6. Block-based (1) or Warp-based(0) 
@@ -23,12 +23,10 @@
 
 ## Output Format: 
 1. Name of the dataset 
-2. Edge count 
-3. Triangles count 
-4. Max Time 
-5. Min Time 
-6. Total number of process 
-7. Number of threads 
-8. Number of block 
-9. Number of buckets used 
-10. TEPS rate based upon max time
+2. Vertex count
+3. Edge count 
+4. Triangles count 
+5. Max Time 
+6. Min Time 
+7. TEPS rate based upon max time
+8. Total number of process 

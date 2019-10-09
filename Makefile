@@ -24,8 +24,9 @@ $(exe):$(objs)
 
 
 test:$(exe)
-	mpirun -n $(N) cuda-memcheck $(exe) data/p2p/input $(N) 16 1 16 0 0 
-#	mpirun -n $(N) $(exe) /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/email-EuAll_adj/ $(N)
+	@#mpirun -n $(N) cuda-memcheck $(exe) /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/p2p-Gnutella08_adj/ $(N) 32 1 32 0 0
+	mpirun -n $(N) $(exe) data/p2p08/input $(N) 32 1 32 0 0 
+	@#mpirun -n $(N) $(exe) /gpfs/alpine/proj-shared/csc289/trianglecounting/snap/email-EuAll_adj/ $(N) 32 1 32 0 0
 
 
 clean:
