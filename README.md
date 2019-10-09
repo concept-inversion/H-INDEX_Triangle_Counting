@@ -12,7 +12,10 @@
     https://www.olcf.ornl.gov/for-users/system-user-guides/summit/summit-user-guide/#running-jobs
 
 
-## Input arguments: 
+## Configuration:
+    Change arguments in Makefile.
+
+### Input arguments: 
 1. Folder name containing the binary file of dataset. 
 2. Total number of process 
 3. Number of threads (Minimum 32)
@@ -30,3 +33,4 @@
 6. Min Time 
 7. TEPS rate based upon max time
 8. Total number of process 
+
