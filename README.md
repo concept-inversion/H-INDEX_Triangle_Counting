@@ -20,11 +20,11 @@ This is the code for Triangle Counting submitted at Graph Challenge 2019.
 ### Input arguments 
 1. Folder name containing the binary file of dataset. 
 2. Total number of process 
-3. Number of threads (Minimum 32)
+3. Number of Threads per Block (Minimum 32)
 4. Number of Blocks 
 5. Number of Buckets for hashing (Limit: 256) 
 6. Block-based (1) or Warp-based(0) 
-7. Degree based Balance (1) or Index based partition(0)
+7. Degree based workload partition (1) or Index based partition(0)
 
 ## Output Format 
 1. Name of the dataset 
