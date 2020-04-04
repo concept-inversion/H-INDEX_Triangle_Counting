@@ -445,53 +445,55 @@ struct arguments Triangle_count(int rank, char name[100], struct arguments args,
 	/* Preprocessing Step to calculate the ratio */
 	long long *prefix=(long long *)malloc(sizeof(long long)*edges);
 	long long temp;
-	for(int i=0;i<edge_list_count;i+=2)
-	 {
-	 	int destination = graph_d->edge_list[i];
-	 	int source = graph_d->edge_list[i+1];
-	 	int N1_start=graph_d->beg_pos[destination];
-	 	int N1_end= graph_d->beg_pos[destination+1];
-	 	int L1= N1_end-N1_start;
-	 	int N2_start= graph_d->beg_pos[source];
-	 	int N2_end= graph_d->beg_pos[source+1];	
-	 	int L2= N2_end-N2_start;
-	 	int sum=L1+L2;
-		if(i==0)
-		{
-			temp=0;
-		}
-		else
-		{
-			temp =  sum +prefix[(i>>1)-1];
-		}
-		prefix[i>>1]= temp;
-	 	//printf("vertexA: %d, D1: %d, vertexB: %d, D2: %d, Degree: %d, prefix: %d\n",vertex,L1,vertex1,L2,L1+L2,temp);
-	 }
+
+	// for(int i=0;i<edge_list_count;i+=2)
+	//  {
+	//  	int destination = graph_d->edge_list[i];
+	//  	int source = graph_d->edge_list[i+1];
+	//  	int N1_start=graph_d->beg_pos[destination];
+	//  	int N1_end= graph_d->beg_pos[destination+1];
+	//  	int L1= N1_end-N1_start;
+	//  	int N2_start= graph_d->beg_pos[source];
+	//  	int N2_end= graph_d->beg_pos[source+1];	
+	//  	int L2= N2_end-N2_start;
+	//  	int sum=L1+L2;
+	// 	if(i==0)
+	// 	{
+	// 		temp=0;
+	// 	}
+	// 	else
+	// 	{
+	// 		temp =  sum +prefix[(i>>1)-1];
+	// 	}
+	// 	prefix[i>>1]= temp;
+	//  	//printf("vertexA: %d, D1: %d, vertexB: %d, D2: %d, Degree: %d, prefix: %d\n",vertex,L1,vertex1,L2,L1+L2,temp);
+	//  }
 	//  cout<<"edge_list_count OK"<<endl;
 	int total_degree= temp;
 	 //printf("total degree: %d,total edges: %d, E_END: %d,E_start:%d, size: %d, rank: %d\n",temp,edges,E_END,E_START,SIZE,rank);
 	int SIZE,ratio;
 	long long E_END,E_START;
 	//-------------------------------------------//
-	if(select_partition==1)
-	{
-		SIZE = (total_degree/total_process);
-		E_END= binary_search(0,edge_count,SIZE*(rank+1),prefix);
-		E_START= binary_search(0,edge_count,SIZE*rank,prefix);
-		E_END=E_END<<1;
-		E_START=E_START<<1;
-	}
-	//--------------------------------------------//
+	// if(select_partition==1)
+	// {
+	// 	SIZE = (total_degree/total_process);
+	// 	E_END= binary_search(0,edges,SIZE*(rank+1),prefix);
+	// 	E_START= binary_search(0,edges,SIZE*rank,prefix);
+	// 	E_END=E_END<<1;
+	// 	E_START=E_START<<1;
+	// }
+	// //--------------------------------------------//
 	
-	else
-	{
-		ratio=2*(edges/total_process);
-		E_START=rank*ratio;
-		E_END=E_START+ratio;
-		SIZE= prefix[E_END/2]-prefix[E_START/2];
-	}
+	// else
+	// {
+	// 	ratio=2*(edges/total_process);
+	// 	E_START=rank*ratio;
+	// 	E_END=E_START+ratio;
+	// 	SIZE= prefix[E_END/2]-prefix[E_START/2];
+	// }
 	//--------------------------------------------//
-	// E_START=0;E_END=edge_list_count;
+	E_START=0;E_END=edge_list_count;
+
 	// cout<<"partition OK!"<<endl;
 	// cout<<E_START<<' '<<E_END<<endl;
 	assert(E_END>E_START);
