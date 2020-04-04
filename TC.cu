@@ -471,7 +471,7 @@ struct arguments Triangle_count(int rank, char name[100], struct arguments args,
 	//  cout<<"edge_list_count OK"<<endl;
 	int total_degree= temp;
 	 //printf("total degree: %d,total edges: %d, E_END: %d,E_start:%d, size: %d, rank: %d\n",temp,edges,E_END,E_START,SIZE,rank);
-	int SIZE,ratio;
+	long long SIZE,ratio;
 	long long E_END,E_START;
 	//-------------------------------------------//
 	// if(select_partition==1)
@@ -486,13 +486,13 @@ struct arguments Triangle_count(int rank, char name[100], struct arguments args,
 	
 	// else
 	// {
-	// 	ratio=2*(edges/total_process);
-	// 	E_START=rank*ratio;
-	// 	E_END=E_START+ratio;
+		ratio=(edge_list_count/(2*total_process))*2;
+		E_START=rank*ratio;
+		E_END=E_START+ratio;
 	// 	SIZE= prefix[E_END/2]-prefix[E_START/2];
 	// }
 	//--------------------------------------------//
-	E_START=0;E_END=edge_list_count;
+	// E_START=0;E_END=edge_list_count;
 
 	// cout<<"partition OK!"<<endl;
 	// cout<<E_START<<' '<<E_END<<endl;
