@@ -1,7 +1,7 @@
 
 struct arguments{
     int edge_count;
-    int count;
+    long long count;
     double time;
     int degree;
     int vertices;

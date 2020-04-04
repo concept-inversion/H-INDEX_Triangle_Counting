@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank); 
 	//int N_GPUS=argv[1];
     // call the function
-    int global_sum;
+    long long global_sum;
     double global_min_time,global_max_time;
    // int E_start;
    // E_start=stat[myrank-1];
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
     //MPI_Barrier(MPI_COMM_WORLD);
    //fprintf(stderr,"Barrier\n");
    args=Triangle_count(myrank,argv[1],args, total_rank,N_THREADS, N_BLOCKS,Buckets, select_thread_group, select_partition);
-   MPI_Reduce(&args.count, &global_sum, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+   MPI_Reduce(&args.count, &global_sum, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);
    MPI_Reduce(&args.time, &global_max_time, 1, MPI_DOUBLE,MPI_MAX, 0, MPI_COMM_WORLD);
    MPI_Reduce(&args.time, &global_min_time, 1, MPI_DOUBLE,MPI_MIN, 0, MPI_COMM_WORLD);
    int cpu_id = get_cpu_id();
@@ -122,9 +122,10 @@ int main(int argc, char *argv[])
    //IP(myrank, cpu_id);
    //printf("%s,GPU: %d,%d, %d, %f\n",argv[1],myrank,args.edge_count,args.degree,args.time);
    //MPI_Barrier(MPI_COMM_WORLD);
+   cout<<global_sum<<endl;
    if(myrank==0)
    {
-     printf("%s,%d,%d,%d,%f,%f,%f,%d \n",argv[1],args.vertices,args.edge_count,global_sum,global_max_time,global_min_time,(args.edge_count/global_max_time/1000000000),total_rank);
+     printf("%s,%d,%d,%lld,%f,%f,%f,%d \n",argv[1],args.vertices,args.edge_count,global_sum,global_max_time,global_min_time,(args.edge_count/global_max_time/1000000000),total_rank);
    }
    MPI_Finalize();
    return 0;
