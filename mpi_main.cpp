@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
    //IP(myrank, cpu_id);
    //printf("%s,GPU: %d,%d, %d, %f\n",argv[1],myrank,args.edge_count,args.degree,args.time);
    //MPI_Barrier(MPI_COMM_WORLD);
-   cout<<global_sum<<endl;
+   // cout<<global_sum<<endl;
    if(myrank==0)
    {
      printf("%s,%d,%d,%lld,%f,%f,%f,%d \n",argv[1],args.vertices,args.edge_count,global_sum,global_max_time,global_min_time,(args.edge_count/global_max_time/1000000000),total_rank);

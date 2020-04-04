@@ -34,7 +34,7 @@ graph::graph(
 	edge_count = fsize(adj_file)/sizeof(vertex_t);
 	edge_list_count= fsize(degree_file)/sizeof(vertex_t);
 
-	cout<<"vert:"<< vert_count<<"  edge: "<<edge_count<<endl;
+	// cout<<"vert:"<< vert_count<<"  edge: "<<edge_count<<endl;
 
 
 	FILE *pFile= fopen(adj_file,"rb");
