@@ -16,7 +16,7 @@ This is the code for Triangle Counting submitted at Graph Challenge 2019.
     2. Go to TC/graph_converter/undirected_csr/  directory. 
         'make'
      Copy gConvu and tuple_to_undirected_csr.bin to a folder. 
-    3. Download the Adjacency MMIO file for datasets from graphchallenge website [https://snap.stanford.edu/data/].
+    3. Download the Adjacency MMIO file for datasets from graphchallenge website [https://snap.stanford.edu/data/] to the same folder.
     4. ./converter.sh <MMIO_file>
         
         
