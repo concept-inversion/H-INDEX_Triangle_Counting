@@ -7,8 +7,19 @@ This is the code for Triangle Counting submitted at Graph Challenge 2019.
     For generating the binary of datasets, we use the converter from:
         https://github.com/huyang1988/TC/blob/master/README.md
     Some example datasets are provided in the data folder of this repository. For using different repository, provide the path to the dataset.
-    i.e. for p2p08 dataset, "data/p2p08/input"
+    i.e. for p2p08 dataset, "data/p2p08/"
 
+
+## How to use the converter?
+    1. Go to TC/gConv/ directory. 
+        'make gConvu'
+    2. Go to TC/graph_converter/undirected_csr/  directory. 
+        'make'
+     Copy gConvu and tuple_to_undirected_csr.bin to a folder. 
+    3. Download the Adjacency MMIO file for datasets from graphchallenge website [https://snap.stanford.edu/data/].
+    4. ./converter.sh <MMIO_file>
+        
+        
 ## Multi-GPU
     We use jsrun to run multi-gpu version of the code on Summit.
     https://www.olcf.ornl.gov/for-users/system-user-guides/summit/summit-user-guide/#running-jobs
